@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #login>form{
+            width: 30%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+            margin: auto;
+            margin-top: 100px;
+            padding: 35px;
+            border-radius: 10px;
+        }
+        h3{
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        input{
+            font-size: 18px;
+            width: 100%;
+            margin: 15px 0px;
+            height: 30px; 
+            border-radius: 8px;
+        }
+        label{
+            font-size: 18px;
+            font-weight: bold;
+        }
+        input[type=text],[type=password],[type=email]{
+             box-sizing: border-box; 
+              padding: 20px;
+        }
+        input[type=submit]{
+            height: 40px;
+            padding: 10px 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="login">
+        <form>
+            <h3>Login</h3>
+            <label for="">Email</label><br>
+            <input id="loginemail" type="email" placeholder="Enter email"><br>
+            <label for="">Password</label><br>
+            <input id="loginpass" type="password" placeholder="Enter password"><br>
+            <input  type="submit" value="LOG IN">
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",myfun)
+     
+    function myfun(){
+    let login=JSON.parse(localStorage.getItem("signupdata"))||[]
+    //    console.log(login)
+        event.preventDefault();
+        let x=document.querySelector("#loginemail").value;
+        let y=document.querySelector("#loginpass").value;
+        //   console.log(x,y)
+        let  flag=login.filter(function(ele){
+             return ele.Email==x && ele.Pass==y
+            // console.log(flag);
+        })
+        if(flag.length>0){
+        alert("login successfully")
+        window.location.href="firstpage.html"
+         return;
+        }
+        else{
+        alert("incorrect email or password")
+         return ;
+    }
+
+        }
+
+
+        
+       
+</script>
